@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record model="ir.ui.view" id="inh_product_template_evaluation_form_view">
+        <field name="name">product.template.evaluation.form.inherited</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+                <field name="type" position="after" >
+                    <field name="calculation"/>
+                </field>
+            <notebook>
+                <page name="Pricing Evaluation Tool" string="Pricing Evaluation Tool" attrs="{'invisible': [('calculation', '=', False)]}">
+                     <group>
+                         <group>
+                             <field name="less_warranty_discount_por" required="1"/>
+                             <field name="less_warranty_discount"/>
+                             <field name="exchange_rate_por" required="1"/>
+                             <field name="exchange_rate"/>
+                             <field name="unit_price" string="Unit Price USD"/>
+                             <field name="freight_in_us" required="1"/>
+                             <field name="total_fob"/>
+                             <field name="total_cost_delivered"/>
+                             <field name="total_cost_delivered_t"/>
+                             <field name="freight_to_customer" required="1"/>
+                             <field name="warranty" required="1"/>
+                         </group>
+                         <group>
+                             <field name="bk" required="1"/>
+                             <field name="total_commission"/>
+                             <field name="floor_por" required="1"/>
+                             <field name="floor_rate"/>
+                             <field name="dime_bank_interest_charges"/>
+                             <field name="sub_total"/>
+                             <field name="risk_factor" required="1"/>
+                             <field name="risk_factor_value"/>
+                             <field name="cogs"/>
+                             <field name="over_factor"/>
+                             <field name="over_factor_total"/>
+                             <field name="total_costs"/>
+                         </group>
+                     </group>
+
+                    <group>
+                         <group>
+                             <field name="net_profit"/>
+                             <field name="net_profit_por"/>
+                             <field name="gross_profit"/>
+                             <field name="gross_profit_por"/>
+                         </group>
+                         <group>
+                             <field name="price_target_marg_por" required="1"/>
+                             <field name="price_target_marg"/>
+                         </group>
+                     </group>
+
+
+                    <group>
+                         <group>
+                             <field name="days_financed" required="1"/>
+                             <field name="interest_rate" required="1"/>
+                             <field name="per_day"/>
+                         </group>
+
+                         <group>
+                             <field name="day_bank_interest"/>
+                         </group>
+                     </group>
+                </page>
+
+                <page name="Accessories" string="Accessories" attrs="{'invisible': [('calculation', '=', False)]}">
+                     <field name="accessories_ids">
+                        <tree editable="bottom" colors="red:subtotal&lt;=0;">
+                            <field name="product_id" options="{'no_quick_create':True,'no_create_edit':True,'no_open':True}"
+                                   required="1"/>
+                            <field name="qty" required="1"/>
+                            <field name="price" required="1"/>
+                            <field name="subtotal" widget='monetary' sum="Sum"/>
+                            <field name="note"/>
+                        </tree>
+                    </field>
+                </page>
+                <page name="Commissions" string="Commissions" attrs="{'invisible': [('calculation', '=', False)]}">
+                     <field name="commissions_ids">
+                        <tree editable="bottom">
+                            <field name="employee_id" options="{'no_quick_create':True,'no_create_edit':True,'no_open':True}"
+                                   required="1"/>
+                            <field name="porcent" required="1"/>
+                            <field name="commission" required="1" sum="Sum"/>
+                            <field name="note"/>
+                        </tree>
+                    </field>
+                </page>
+
+
+            </notebook>
+        </field>
+    </record>
+
+    <!--
+    <record id="inh_product_template_fuelle_search" model="ir.ui.view">
+        <field name="name">inh.product.template.fuelle.search</field>
+        <field name="model">product.template</field>
+        <field name="priority" eval="30"/>
+        <field name="inherit_id" ref="product.product_template_search_view"/>
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <filter name="es_fuelle" string="Fuelle" domain="[('fuelle', '=', 1)]"/>
+            </field>
+       </field>
+    </record>
+
+
+    <record id="inh_product_template_fuelle_tree" model="ir.ui.view">
+        <field name="name">inh.product.template.fuelle</field>
+        <field name="model">product.template</field>
+        <field name="priority" eval="30"/>
+        <field name="inherit_id" ref="product.product_template_tree_view"/>
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="fuelle"/>
+                <field name="codigo_cliente"/>
+            </field>
+       </field>
+    </record>
+    -->
+
+
+</odoo>
