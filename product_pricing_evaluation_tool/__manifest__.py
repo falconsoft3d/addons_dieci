@@ -33,6 +33,7 @@
     'depends': ['base','sale','hr_payroll'],
     'data': [
         'views/product_template_view.xml',
+        'security/ir.model.access.csv'
     ],
     'images': ['static/description/banner.jpg'],
 }

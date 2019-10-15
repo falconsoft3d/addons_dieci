@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_commissions_list,access.commissions.list,product_pricing_evaluation_tool.model_commissions_list,,1,1,1,1
+access_accessories_list,access.accessories.list,product_pricing_evaluation_tool.model_accessories_list,,1,1,1,1
